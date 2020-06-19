@@ -1,0 +1,37 @@
+{
+  "name": "calender",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build_webpack": "webpack --mode development",
+    "build-css": "sass asset/scss: public/css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marumaro1010/my_calender.git"
+  },
+  "author": "zoeeee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marumaro1010/my_calender/issues"
+  },
+  "homepage": "https://github.com/marumaro1010/my_calender#readme",
+  "dependencies": {
+    "bootstrap": "^4.5.0",
+    "jquery": "^3.5.1",
+    "node-sass": "^4.14.1",
+    "popper": "^1.0.1",
+    "popper.js": "^1.16.1",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.2.1",
+    "tether": "^1.4.7"
+  },
+  "devDependencies": {
+    "css-loader": "^3.6.0",
+    "express": "^4.17.1",
+    "ts-loader": "^7.0.5",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  }
+}
