@@ -28,6 +28,7 @@ $end_date = date('t',strtotime($year.'-'.$month));
           <th>Sun</th><th>Mon</th><th>The</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
       </tr>
       <?php
+      $ym = $year.'-'.$month;
       $start = date('w',strtotime($start_date));
       $end = $end_date;
       $cal_text = '';
@@ -54,14 +55,15 @@ $end_date = date('t',strtotime($year.'-'.$month));
             <?php echo $cal_text;?>
           </div>
           <?php
+            $date_str = $ym.'-'.$cal_text;
             //撈取所有資料
-            $sql_input[] = '2020-06-24';
+            $sql_input[0] = "'".$date_str ."'";
             $result = db_get_user($db,$sql_input);
             unset($sql_input);
             if($result != '')
             {
               ?>
-              <div class="event_slip"><?php echo $result?></div>
+              <div class="event_slip"><?php echo $result[0]['el_content']?></div>
               <?php
             }  
           ?>
@@ -81,9 +83,9 @@ $end_date = date('t',strtotime($year.'-'.$month));
 <?php
 function db_get_user($db,$arr_input)
 {
-  $result = $db->table('user')
+  $result = $db->table('event_list')
             ->select('*')
-            ->where(' event_date = ? ',$arr_input)
+            ->where(' el_date = ? ',$arr_input)
             ->get();
   return $result;
 }

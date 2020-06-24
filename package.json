@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build_webpack": "webpack --mode development",
-    "build-css": "sass asset/scss: public/css"
+    "build-css": "node-sass asset/scss/style.scss public/css/style.css --output-style compressed"
   },
   "repository": {
     "type": "git",
