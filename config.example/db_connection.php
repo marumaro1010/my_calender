@@ -2,10 +2,10 @@
 class DB
 {
     //資料庫連線設定
-    public $dbserver = 'SERVER';
-    public $dbdatabase = 'database';
-    public $dbusername = 'account';
-    public $dbpassword = 'password';
+    public $dbserver = DB_SERVER;
+    public $dbdatabase = DB_DATABASE;
+    public $dbusername = DB_ACCOUNT;
+    public $dbpassword = DB_PASSWORD;
 
     protected  $connect;
     protected  $table_name;

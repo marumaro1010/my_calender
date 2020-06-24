@@ -1,9 +1,11 @@
 ﻿<?php
 require_once('head.php');
+// require_once('db_sql/db_event.php');
 
-//=== 取得參數 op===
+//=== 取得參數 op ===
 $year = @$_GET['year'];
 $month = @$_GET['month'];
+//=== 取得參數 ed ===
 if($year == '' && $month == '' )
 {
   $year=date("Y");
@@ -11,7 +13,9 @@ if($year == '' && $month == '' )
 }
 $start_date = date('Y-m-01',strtotime($year.'-'.$month));
 $end_date = date('t',strtotime($year.'-'.$month));
-//=== 取得參數 ed===
+
+
+
 ?>
 <div class="container">
   <h2 align="center">My Event</h2>
@@ -49,7 +53,18 @@ $end_date = date('t',strtotime($year.'-'.$month));
           <div>
             <?php echo $cal_text;?>
           </div>
-          <!-- <div class="event_slip">as2</div> -->
+          <?php
+            //撈取所有資料
+            $sql_input[] = '2020-06-24';
+            $result = db_get_user($db,$sql_input);
+            unset($sql_input);
+            if($result != '')
+            {
+              ?>
+              <div class="event_slip"><?php echo $result?></div>
+              <?php
+            }  
+          ?>
         </td> 
         <?php
         if($i % 7 == 6)
@@ -64,6 +79,14 @@ $end_date = date('t',strtotime($year.'-'.$month));
     </table>
 </div>
 <?php
+function db_get_user($db,$arr_input)
+{
+  $result = $db->table('user')
+            ->select('*')
+            ->where(' event_date = ? ',$arr_input)
+            ->get();
+  return $result;
+}
 require_once('foot.php');
 ?>
 

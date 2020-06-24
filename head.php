@@ -1,3 +1,6 @@
+<?php
+require_once('config/server_info.php');
+?>
 <html>
     <head>
         <meta charset="utf-8">
