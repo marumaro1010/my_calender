@@ -20,7 +20,7 @@ $end_date = date('t',strtotime($year.'-'.$month));
 <div class="container">
   <h2 align="center">My Event</h2>
   <h3 align="center"><?php echo $year."-".$month; ?></h3>
-  <button type="button" class="btn btn-primary" style="margin:10px" data-toggle="modal" data-target="#ooo">Add event</button>
+  <button type="button" class="btn btn-primary" style="margin:10px" data-toggle="modal" data-target="#addEvent">Add event</button>
   <!-- <a href="calender.php?year=<?php echo $month-1 == 0 ? $year-1 : $year;?>&month=<?php echo $month-1==0 ? 12 : $month-1;?>" style="text-decoration:none;">◄</a>
   <a href="calender.php?year=<?php echo $month+1==13 ? $year+1 : $year;?>&month=<?php echo $month+1==13 ? 1 : $month+1; ?>" style="text-decoration:none;">►</a> -->
   <table class="table">

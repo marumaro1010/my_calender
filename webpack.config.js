@@ -3,7 +3,8 @@ module.exports = {
     entry: './asset/js/calender.js',
     output: {
       path: path.resolve(__dirname, 'public/js'),
-      filename: 'calender.js'
+      filename: 'calender.js',
+      publicPath: 'public/js/'
     },
     module: {
         rules: [
@@ -15,11 +16,17 @@ module.exports = {
                   // css-loader
                   {
                     loader: 'css-loader',
-                  },
-                  // sass-loader
-                  { loader: 'sass-loader' }
+                  }
                 ]
-            }
+            },
+            {
+              test: /\.(png|jpe?g|gif)$/i,
+              use: [
+                {
+                  loader: 'file-loader',
+                },
+              ]
+            },
         ]
     }
 };

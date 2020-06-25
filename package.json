@@ -20,6 +20,8 @@
   "dependencies": {
     "bootstrap": "^4.5.0",
     "jquery": "^3.5.1",
+    "jquery-ui": "^1.12.1",
+    "jquery-ui-bundle": "^1.12.1-migrate",
     "node-sass": "^4.14.1",
     "popper": "^1.0.1",
     "popper.js": "^1.16.1",
@@ -30,6 +32,7 @@
   "devDependencies": {
     "css-loader": "^3.6.0",
     "express": "^4.17.1",
+    "file-loader": "^6.0.0",
     "ts-loader": "^7.0.5",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
