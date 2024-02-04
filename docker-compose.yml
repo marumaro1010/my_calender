@@ -1,0 +1,42 @@
+version: '1.0'
+
+networks:
+  mynet:
+volumes:
+  mydata:
+
+services:
+  php:
+    build: ./php7.4
+    ports:
+      - "80:80"
+    depends_on:
+      - mysqldb
+    volumes:
+      - ./www:/var/www/html
+    networks:
+      - mynet
+  mysqldb:
+    image: mysql:8.3.0
+    ports:
+      - "3306:3306"
+    restart: always
+    volumes:
+      - mydata:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: test
+    networks:
+      - mynet
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysqldb
+    restart: always
+    environment:
+      PMA_HOST: mysqldb
+    networks:
+      - mynet
