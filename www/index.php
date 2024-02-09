@@ -6,11 +6,10 @@ require_once('head.php');
 $year = @$_GET['year'];
 $month = @$_GET['month'];
 //=== 取得參數 ed ===
-if($year == '' && $month == '' )
-{
-  $year=date("Y");
-  $month=date("m");
-}
+
+$year=$year?:date("Y");
+$month=$month?:date("m");
+
 $start_date = date('Y-m-01',strtotime($year.'-'.$month));
 $end_date = date('t',strtotime($year.'-'.$month));
 
@@ -34,17 +33,13 @@ $end_date = date('t',strtotime($year.'-'.$month));
       $cal_text = '';
       for($i=0;$i<42;$i++)
       { 
-        if($i >= $start && $i <= ($end + ($start-1)))
-        {
+        if($i >= $start && $i <= ($end + ($start-1))) {
           $cal_text = ($i - ($start-1));
-        }
-        else
-        {
+        } else {
           $cal_text = '';
         }
 
-        if($i % 7 == 0)
-        {
+        if($i % 7 == 0) {
           ?>
           <tr>
           <?php
@@ -58,19 +53,23 @@ $end_date = date('t',strtotime($year.'-'.$month));
             $date_str = $ym.'-'.$cal_text;
             //撈取所有資料
             $sql_input[0] = "'".$date_str ."'";
-            $result = db_get_user($db,$sql_input);
+            $eventList = getEventList($db, $sql_input);
             unset($sql_input);
-            if($result != '')
+            if(!empty($eventList))
             {
-              ?>
-              <div class="event_slip"><?php echo $result[0]['el_content']?></div>
-              <?php
+                foreach($eventList as $key => $event) 
+                {
+                  ?>
+                  <div class="event_slip">
+                    <?php echo $event['el_content'];?>
+                  </div>
+                  <?php
+                }
             }  
           ?>
         </td> 
         <?php
-        if($i % 7 == 6)
-        {
+        if($i % 7 == 6) {
           ?>
           <tr>
           <?php
@@ -81,11 +80,11 @@ $end_date = date('t',strtotime($year.'-'.$month));
     </table>
 </div>
 <?php
-function db_get_user($db,$arr_input)
+function getEventList($db,$arr_input)
 {
   $result = $db->table('event_list')
             ->select('*')
-            ->where(' el_date = ? ',$arr_input)
+            ->where('el_date = ? ', $arr_input)
             ->get();
   return $result;
 }

@@ -9,7 +9,7 @@ require_once('config/server_info.php');
         <link rel="stylesheet" href="public/css/style.css" type="text/css" />
         <script src="public/js/calender.js"></script>
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto+Condensed">
-        <!-- <script src="asset/js/calender.js"></script> -->
+        <script src="asset/js/calender.js"></script>
     </head>
     <body>
        

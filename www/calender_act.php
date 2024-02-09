@@ -1,5 +1,6 @@
 <?php
 require_once('config/server_info.php');
+require_once('php_package/php_func_comm.php');
 //===取得參數 op===
 $date = $_POST['date'];
 $event = $_POST['event'];
@@ -23,6 +24,6 @@ $arr_input['el_content'] = $event;
 $db->table('event_list')->insert($arr_input);
 unset($arr_input);
 
-redirect('新增成功','calender.php');
-exit();
+header('location:/');
+die();
 ?>

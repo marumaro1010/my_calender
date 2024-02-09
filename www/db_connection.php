@@ -73,6 +73,9 @@ class DB
     public function get()
     {
         $result = $this->connect->query($this->sql);
+        if(empty($result)) {
+            return [];
+        }
         //內容轉陣列
         while($row = mysqli_fetch_assoc($result)) 
         {
