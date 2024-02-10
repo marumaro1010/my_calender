@@ -1,6 +1,6 @@
 ﻿<?php
 require_once('head.php');
-// require_once('db_sql/db_event.php');
+require_once('db_sql/db_event.php');
 
 //=== 取得參數 op ===
 $year = @$_GET['year'];
@@ -80,14 +80,6 @@ $end_date = date('t',strtotime($year.'-'.$month));
     </table>
 </div>
 <?php
-function getEventList($db,$arr_input)
-{
-  $result = $db->table('event_list')
-            ->select('*')
-            ->where('el_date = ? ', $arr_input)
-            ->get();
-  return $result;
-}
 require_once('foot.php');
 ?>
 
