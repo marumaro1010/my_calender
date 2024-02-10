@@ -2,4 +2,4 @@ config/
 public/
 node_modules/
 .vscode
-
+.composer.lock
