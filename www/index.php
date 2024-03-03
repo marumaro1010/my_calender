@@ -16,19 +16,25 @@ $end_date = date('t',strtotime($year.'-'.$month));
 
 
 ?>
-<div class="container">
-  <h2 align="center">My Event</h2>
+<div class="container-fluid">
+  <h2 align="center">我的行事曆</h2>
   <h3 align="center"><?php echo $year."-".$month; ?></h3>
   <button type="button" class="btn btn-primary" style="margin:10px" data-toggle="modal" data-target="#addEvent">Add event</button>
-  <!-- <a href="calender.php?year=<?php echo $month-1 == 0 ? $year-1 : $year;?>&month=<?php echo $month-1==0 ? 12 : $month-1;?>" style="text-decoration:none;">◄</a>
-  <a href="calender.php?year=<?php echo $month+1==13 ? $year+1 : $year;?>&month=<?php echo $month+1==13 ? 1 : $month+1; ?>" style="text-decoration:none;">►</a> -->
+  <a class="btn btn-secondary" href="index.php?year=<?php echo $month-1 == 0 ? $year-1 : $year;?>&month=<?php echo $month-1==0 ? 12 : $month-1;?>" style="text-decoration:none;">上個月</a>
+  <a class="btn btn-secondary" href="index.php?year=<?php echo $month+1==13 ? $year+1 : $year;?>&month=<?php echo $month+1==13 ? 1 : $month+1; ?>" style="text-decoration:none;">下個月</a>
   <table class="table">
-      <tr class="title_bar" >
-          <th>Sun</th><th>Mon</th><th>The</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
+      <tr >
+          <th scope="col">Sun</th>
+          <th scope="col">Mon</th>
+          <th scope="col">The</th>
+          <th scope="col">Wed</th>
+          <th scope="col">Thu</th>
+          <th scope="col">Fri</th>
+          <th scope="col">Sat</th>
       </tr>
       <?php
       $ym = $year.'-'.$month;
-      $start = date('w',strtotime($start_date));
+      $start = date('w', strtotime($start_date));
       $end = $end_date;
       $cal_text = '';
       for($i=0;$i<42;$i++)
