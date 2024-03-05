@@ -13,25 +13,14 @@ $month=$month?:date("m");
 $start_date = date('Y-m-01',strtotime($year.'-'.$month));
 $end_date = date('t',strtotime($year.'-'.$month));
 
-
-
 ?>
 <div class="container-fluid">
-  <h2 align="center">我的行事曆</h2>
   <h3 align="center"><?php echo $year."-".$month; ?></h3>
   <button type="button" class="btn btn-primary" style="margin:10px" data-toggle="modal" data-target="#addEvent">Add event</button>
   <a class="btn btn-secondary" href="index.php?year=<?php echo $month-1 == 0 ? $year-1 : $year;?>&month=<?php echo $month-1==0 ? 12 : $month-1;?>" style="text-decoration:none;">上個月</a>
   <a class="btn btn-secondary" href="index.php?year=<?php echo $month+1==13 ? $year+1 : $year;?>&month=<?php echo $month+1==13 ? 1 : $month+1; ?>" style="text-decoration:none;">下個月</a>
   <table class="table">
-      <tr >
-          <th scope="col">Sun</th>
-          <th scope="col">Mon</th>
-          <th scope="col">The</th>
-          <th scope="col">Wed</th>
-          <th scope="col">Thu</th>
-          <th scope="col">Fri</th>
-          <th scope="col">Sat</th>
-      </tr>
+      <tr id="week"></tr>
       <?php
       $ym = $year.'-'.$month;
       $start = date('w', strtotime($start_date));
@@ -88,6 +77,18 @@ $end_date = date('t',strtotime($year.'-'.$month));
 <?php
 require_once('foot.php');
 ?>
-
+<script>
+renderWeekTh();
+function renderWeekTh()
+{
+  const week = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  let ul='';
+  week.forEach(element => {
+    console.log(element);
+    ul += `<th scope="col"> ${element}</th>`
+  });
+  document.getElementById("week").innerHTML=ul;
+}
+</script>
 
 

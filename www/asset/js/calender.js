@@ -3,8 +3,6 @@ window.$ = window.jQuery = $;
 require('bootstrap');
 import 'jquery-ui-bundle';
 import 'jquery-ui-bundle/jquery-ui.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 
 $(function(){
     $("#datepicker").datepicker({
@@ -15,8 +13,3 @@ $(function(){
         $('#form1').submit();
     });
 });
-
-function send()
-{
-    alert(111);
-}

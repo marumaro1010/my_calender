@@ -12,4 +12,5 @@ require_once('config/server_info.php');
         <script src="asset/js/calender.js"></script>
     </head>
     <body>
+    <?php require_once('navbar.php'); ?>
        
